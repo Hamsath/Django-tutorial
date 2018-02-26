@@ -1,25 +1,18 @@
-<html>
-  <head>
-    <title> Login </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
+{% extends 'base.html' %}
 
-    {% load static %}
-    <link rel="stylesheet" href=" {% static 'accounts/style.css' %}"
-  </head>
-  <body>
-    <div class="container">
-      <H1> Welcome! </H1>
-        You can login here!
-      <button class="btn btn-default" type="button" name="button"> Login </button>
-    </div>
+{% block head %}
+<title> Login </title>
+{% endblock %}
 
-    <div class="jumbotron">
-      <div class="container">
-      <h1>Welcome!</h1>
-      </div>
-    </div>
-  </body>
+{% block body %}
+<h1> Welcome! </h1>
+<p> You can login here. </p>
 
-</html>
+<h2> Login </h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
+
+{% endblock %}
