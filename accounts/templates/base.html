@@ -1,7 +1,7 @@
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
 
     {% block head %}
@@ -10,8 +10,32 @@
   </head>
 
   <body>
+    <br/>
+    <div class="container">
+
+     <!-- Static navbar -->
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#">Social Media</a>
+         </div>
+
+           <ul class="nav navbar-nav navbar-right">
+             <li class="active"><a href="/account/register"> Register <span class="sr-only">(current)</span></a></li>
+           </ul>
+         </div><!--/.nav-collapse -->
+     </nav>
+
     {% block body %}
     {% endblock %}
+
+  </div>
   </body>
 
 </html>
