@@ -25,10 +25,21 @@
            </button>
            <a class="navbar-brand" href="#">Social Media</a>
          </div>
-
-           <ul class="nav navbar-nav navbar-right">
-             <li class="active"><a href="/account/register"> Register <span class="sr-only">(current)</span></a></li>
+         {% if user.is_authenticated %}
+           <ul class="nav navbar-nav">
+             <li class="active"><a href="{% url 'home' %}"> Home </a></li>
+             <li class="active"><a href="{% url 'view_profile' %}"> Profile </a></li>
+             <li class="active"><a href="{% url 'edit_profile' %}"> Edit Profile </a></li>
+             <li class="active"><a href="{% url 'change_password' %}"> Change Password </a></li>
+             <li class="active"><a href="{% url 'password_reset' %}"> Reset Password </a></li>
+             <li class="active"><a href="{% url 'logout' %}"> Logout </a></li>
            </ul>
+          {% else %}
+           <ul class="nav navbar-nav navbar-right">
+             <li class="active"><a href="{% url 'login' %}"> Login </a></li>
+             <li class="active"><a href="{% url 'register' %}"> Register </a></li>
+           </ul>
+           {% endif %}
          </div><!--/.nav-collapse -->
      </nav>
 
