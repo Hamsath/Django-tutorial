@@ -25,7 +25,7 @@ class LoginRequiredMiddleware:
         #     if not any(url.match(path) for url in EXEMPT_URLS):
         #         return redirect(settings.LOGIN_URL)
 
-        if path == reverse('logout').lstrip('/'):
+        if path == reverse('accounts:logout').lstrip('/'):
             logout(request)
 
         url_is_exempt = any(url.match(path) for url in EXEMPT_URLS)
