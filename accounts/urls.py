@@ -22,8 +22,14 @@ urlpatterns=[
     name='password_reset'),
 
 
-    url(r'^password_reset/done/$', password_reset_done,{'template_name':'accounts/reset_password_done.html'}, name='password_reset_done'),
+    url(r'^password_reset/done/$', password_reset_done,{'template_name':'accounts/reset_password_done.html'},
+    name='password_reset_done'),
+
     url(r'^password_reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        password_reset_confirm, name='password_reset_confirm'),
-    url(r'^password_reset/complete/$', password_reset_complete, name='password_reset_complete'),
+        password_reset_confirm,{'template_name':'accounts/reset_password_confirm.html',
+        'post_reset_redirect':'accounts:password_reset_complete'}, name='password_reset_confirm'),
+
+
+    url(r'^password_reset/complete/$', password_reset_complete,{'template_name':'accounts/reset_password_complete.html'},
+     name='password_reset_complete'),
 ]

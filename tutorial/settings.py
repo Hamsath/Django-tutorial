@@ -127,7 +127,11 @@ LOGIN_URL = '/account/login'
 
 LOGIN_EXEMPT_URLS = (
     r'^account/logout/$',
-    r'^account/register/$'
+    r'^account/register/$',
+    r'^account/password_reset/$',
+    r'^account/password_reset/done/$',
+    r'^account/password_reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    r'^account/password_reset/complete/$',
                 )
 
 # Host for sending e-mail.

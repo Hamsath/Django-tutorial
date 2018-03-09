@@ -23,7 +23,7 @@
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="#">Social Media</a>
+           <a class="navbar-brand" href="{% url 'accounts:login' %}">Social Media</a>
          </div>
          {% if user.is_authenticated %}
            <ul class="nav navbar-nav">
@@ -31,10 +31,14 @@
              <li class="active"><a href="{% url 'accounts:view_profile' %}"> Profile </a></li>
              <li class="active"><a href="{% url 'accounts:edit_profile' %}"> Edit Profile </a></li>
              <li class="active"><a href="{% url 'accounts:change_password' %}"> Change Password </a></li>
-             <li class="active"><a href="{% url 'accounts:password_reset' %}"> Reset Password </a></li>
+
              <li class="active"><a href="{% url 'accounts:logout' %}"> Logout </a></li>
            </ul>
           {% else %}
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'accounts:password_reset' %}"> Reset Password </a></li>
+          </ul>
+
            <ul class="nav navbar-nav navbar-right">
              <li class="active"><a href="{% url 'accounts:login' %}"> Login </a></li>
              <li class="active"><a href="{% url 'accounts:register' %}"> Register </a></li>
