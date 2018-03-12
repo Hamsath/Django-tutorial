@@ -7,9 +7,14 @@
 {% block body %}
 
 <div class="container">
-  <h3> {{user}} <h3>
-  <h3> {{user.first_name}} <h3>
-  <h3> {{user.last_name}} <h3>
-  <h3> {{user.email}} <h3>
+  <h3> User: {{user}} <h3>
+  <h3> First name: {{user.first_name}} <h3>
+  <h3> Last name: {{user.last_name}} <h3>
+  <h3> Email: {{user.email}} <h3>
+  <h3> Description: {{user.userprofile.description}} <h3>
+  <h3> City: {{user.userprofile.city}} <h3>
+  <h3> Website: {{user.userprofile.website}} <h3>
+  <h3> Phone: {{user.userprofile.phone}} <h3>
+  <img src=" {{user.userprofile.image.url}} " width="240">
 </div>
 {% endblock %}
