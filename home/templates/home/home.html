@@ -14,5 +14,9 @@
   </form>
 
   <h2> {{ text }} </h2>
+  {% for post in posts %}
+    <h3> {{ post.post }} </h3>
+    <h4> Added by {{ post.user.get_full_name }} on {{post.date}} </h4>
+  {% endfor %}
 
 {% endblock %}
