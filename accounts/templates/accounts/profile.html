@@ -15,6 +15,9 @@
   <h3> City: {{user.userprofile.city}} <h3>
   <h3> Website: {{user.userprofile.website}} <h3>
   <h3> Phone: {{user.userprofile.phone}} <h3>
+
+  {% if user.userprofile.image %}
   <img src=" {{user.userprofile.image.url}} " width="240">
+  {% endif %}
 </div>
 {% endblock %}
