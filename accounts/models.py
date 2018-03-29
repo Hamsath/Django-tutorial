@@ -9,7 +9,7 @@ from django.db.models.signals import post_save
 
 class UserProfileManager(models.Manager):
     def get_queryset(self):
-        return super(UserProfileManager,self).get_queryset().filter(city='Chennai')
+        return super(UserProfileManager,self).get_queryset()   # use .filter(website='www.google.com') to filter the rows accordingly
 
 class userProfile(models.Model):
     user=models.OneToOneField(User)
@@ -28,4 +28,4 @@ def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = userProfile.objects.create(user=kwargs['instance'])
 
-post_save.connect(create_profile,sender=User)
+post_save.connect(create_profile,sender=User)    # signals are used to execute some code after a certain action
