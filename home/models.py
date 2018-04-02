@@ -15,6 +15,7 @@ class Post(models.Model):
     def __str__(self):
         return self.post
 
+
 class Friend(models.Model):
     users = models.ManyToManyField(User)
     current_user = models.ForeignKey(User , related_name = 'owner', null=True)   # Requires related name when Mant to Many relationship is used

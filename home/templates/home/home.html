@@ -17,22 +17,37 @@
 
     <h2> {{ text }} </h2>
     {% for post in posts %}
-      <h3> {{ post.post }} </h3>
-      <h4> Added by {{ post.user.get_full_name }} on {{post.created}} </h4>
+      {% if post.user == request.user or post.user in friends %}
+        <h3> {{ post.post }} </h3>
+        <h4> Added by {{ post.user.get_full_name }} on {{post.created}} </h4>
+          {% if post in current_user_posts  %}
+          <button type="button" class="btn">
+            <a href="#"> Delete </a>
+          </button>
+          {% endif %}
+      {% endif %}
     {% endfor %}
   </div>
 
   <div class = "col-md-4">
-    <h2> Other people </h2>
     <br>
+    <h2> Other people </h2>
     {% for user in users %}
       <a href="{% url 'accounts:view_profile_by_pk' pk=user.pk %}"> <h4> {{ user.username }} </h4> </a>
+      {% if user not in friends %}
+        <button type="button" class="btn btn-success">
+          <a href="{% url 'home:change_friends' operation='add' pk=user.pk %}"> Add Friend </a>
+        </button>
+      {% endif %}
     {% endfor %}
 
     <h2> Friends </h2>
 
     {% for friend in friends %}
       <a href="{% url 'accounts:view_profile_by_pk' pk=user.pk %}"> <h4> {{ friend.username }} </h4> </a>
+      <button type="button" class="btn">
+      <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}"> Remove Friend </a>
+      </button>
     {% endfor %}
 
 
