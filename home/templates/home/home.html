@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block head %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'home/style.css' %}" type="text/css">
+
 <title> Home </title>
 {% endblock %}
 
@@ -22,7 +26,7 @@
         <h4> Added by {{ post.user.get_full_name }} on {{post.created}} </h4>
           {% if post in current_user_posts  %}
           <button type="button" class="btn">
-            <a href="#"> Delete </a>
+            <a href="{% url 'home:delete_post' %}"> Delete </a>
           </button>
           {% endif %}
       {% endif %}
@@ -32,22 +36,24 @@
   <div class = "col-md-4">
     <br>
     <h2> Other people </h2>
-    {% for user in users %}
-      <a href="{% url 'accounts:view_profile_by_pk' pk=user.pk %}"> <h4> {{ user.username }} </h4> </a>
-      {% if user not in friends %}
-        <button type="button" class="btn btn-success">
-          <a href="{% url 'home:change_friends' operation='add' pk=user.pk %}"> Add Friend </a>
-        </button>
-      {% endif %}
-    {% endfor %}
+      {% for user in users %}
+          <a href="{% url 'accounts:view_profile_by_pk' pk=user.pk %}"> <h4> {{ user.first_name }} {{ user.last_name }} </h4> </a>
+          {% if user not in friends %}
+            <button type="button" class="btn btn-success">
+              <a href="{% url 'home:change_friends' operation='add' pk=user.pk %}"> Add Friend </a>
+            </button>
+          {% endif %}
+      {% endfor %}
 
     <h2> Friends </h2>
 
     {% for friend in friends %}
-      <a href="{% url 'accounts:view_profile_by_pk' pk=user.pk %}"> <h4> {{ friend.username }} </h4> </a>
-      <button type="button" class="btn">
-      <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}"> Remove Friend </a>
-      </button>
+      {% if friend != request.user %}
+        <a href="{% url 'accounts:view_profile_by_pk' pk=friend.pk %}"> <h4> {{ friend.username }} </h4> </a>
+        <button type="button" class="btn">
+          <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}"> Remove Friend </a>
+        </button>
+      {% endif %}
     {% endfor %}
 
 

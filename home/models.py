@@ -15,6 +15,10 @@ class Post(models.Model):
     def __str__(self):
         return self.post
 
+    @classmethod
+    def delete_post_data(cls,request,del_post):
+        del_post[0].delete()
+
 
 class Friend(models.Model):
     users = models.ManyToManyField(User)

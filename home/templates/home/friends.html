@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> Profile </title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <h2> Friends </h2>
+
+  {% for friend in friends %}
+    {% if friend != request.user %}
+      <a href="{% url 'accounts:view_profile_by_pk' pk=friend.pk %}"> <h4> {{ friend.username }} </h4> </a>
+      <button type="button" class="btn">
+        <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}"> Remove Friend </a>
+      </button>
+    {% endif %}
+  {% endfor %}
+
+</div>
+{% endblock %}

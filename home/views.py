@@ -45,3 +45,18 @@ def change_friends(request, operation , pk):
         Friend.lose_friend(request.user,friend)
 
     return redirect('home:home')
+
+def delete_post(request):
+
+    user_post = Post.objects.filter(user_id=request.user.id)
+    Post.delete_post_data(request,user_post)
+
+    return redirect('home:home')
+
+def friends(request):
+    friend,created = Friend.objects.get_or_create(current_user=request.user)
+    friends = friend.users.all()
+
+    args = {'friends':friends}
+
+    return render(request, 'home/friends.html',args)
