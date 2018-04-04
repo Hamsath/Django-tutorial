@@ -44,7 +44,11 @@ def change_friends(request, operation , pk):
     elif operation == 'remove':
         Friend.lose_friend(request.user,friend)
 
+    if (request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/home/friends/'):
+        return redirect('home:friends')
+
     return redirect('home:home')
+
 
 def delete_post(request):
 
