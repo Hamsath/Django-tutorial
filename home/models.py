@@ -17,7 +17,7 @@ class Post(models.Model):
 
     @classmethod
     def delete_post_data(cls,request,del_post):
-        del_post[0].delete()
+        del_post.delete()
 
 
 class Friend(models.Model):

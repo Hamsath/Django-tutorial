@@ -1,1 +1,63 @@
 
+html{
+  display:inline;
+}
+
+body, html {
+    height: 100%;
+}
+
+
+.container {
+
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+	background-image: url("https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-3/background.jpg");
+
+  background-size: cover;
+
+  /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	text-align: center;
+	width: 100%;
+}
+
+h1 {
+	font-size: 32px;
+  font-family: Palatino, 'Palatino Linotype', serif;
+	color:rgb(121,149,117);
+}
+
+h2 {
+	font-size: 56px;
+}
+
+h3{
+word-wrap: break-word;
+}
+
+
+
+p {
+	font-size:2rem;
+}
+
+a {
+	color: ;
+	font-size: 24px;
+	text-decoration: none;
+  font-size:1.25em;
+}
+
+#footer{
+  font-size:1.25rem;
+}

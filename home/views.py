@@ -50,10 +50,10 @@ def change_friends(request, operation , pk):
     return redirect('home:home')
 
 
-def delete_post(request):
-
-    user_post = Post.objects.filter(user_id=request.user.id)
-    Post.delete_post_data(request,user_post)
+def delete_post(request,post_id):
+    if post_id:
+        user_post = Post.objects.filter(id=post_id)
+        Post.delete_post_data(request,user_post)
 
     return redirect('home:home')
 

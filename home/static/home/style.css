@@ -11,7 +11,7 @@ body, html {
 
   font-family: 'Trebuchet MS', Helvetica, sans-serif;
 	background-image: url("https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-3/background.jpg");
-  
+
   background-size: cover;
 
   /* Full height */
@@ -33,6 +33,10 @@ h1 {
 
 h2 {
 	font-size: 56px;
+}
+
+h3{
+word-wrap: break-word;
 }
 
 
